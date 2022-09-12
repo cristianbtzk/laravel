@@ -10,8 +10,9 @@
 <body>
     <form action="{{url('agenda', ['id' => $agenda['id']])}}" method="POST">
         @method("PUT")
-        @include('agenda.form')
+        @csrf
 
+        @include('agenda.form')
     </form>
 
 </body>

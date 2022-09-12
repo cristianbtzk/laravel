@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('agenda.layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+@section('title','Detalhes do Usuário')
 
-<body>
-    <form action="{{route('agenda.store')}}" method="POST">
-        @method("POST")
-        <label>Nome</label>
-        <input name="name" type='text' /><br>
-        <label  >Fone</label>
-        <input type='text' name="phone" /><br>
-        <label>Email</label>
-        <input name="email"  type='email' /><br>
-        <button type='submit'>Submit</button>
-    </form>
-</body>
+@section('content')
+<form action="{{route('agenda.store')}}" method="POST">
+    @method("POST")
+    @csrf
 
-</html>
+    @component('agenda.form')@endcomponent
+
+</form>
+@endsection

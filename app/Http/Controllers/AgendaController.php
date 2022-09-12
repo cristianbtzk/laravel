@@ -13,7 +13,7 @@ class AgendaController extends Controller
      */
     public function index()
     {
-        return "index";
+      return view('agenda.index');
     }
 
     /**
@@ -23,6 +23,7 @@ class AgendaController extends Controller
      */
     public function create()
     {
+        session(['user' => null]);
         return view('agenda.create');
 
         //
@@ -66,6 +67,8 @@ class AgendaController extends Controller
         $agenda = array_values(array_filter(session()->get('users'), function ($user) use($id) {
             return $user['id'] == $id;
         }))[0];
+        session(['user' => $agenda]);
+
         return view('agenda.show')->with('agenda', $agenda);
         //
     }
@@ -78,7 +81,12 @@ class AgendaController extends Controller
      */
     public function edit($id)
     {
-        return "edit";
+        $agenda = array_values(array_filter(session()->get('users'), function ($user) use($id) {
+            return $user['id'] == $id;
+        }))[0];
+        session(['user' => $agenda]);
+        return view('agenda.edit')->with('agenda', $agenda);
+
         //
     }
 
@@ -118,7 +126,7 @@ class AgendaController extends Controller
         session(['users' => array_filter(session()->get('users'), function ($user) use($id) {
             return $user['id'] != $id;
         })]);
-        return view('agenda.index');
+        return redirect()->route('agenda.index');
 
         //
     }
