@@ -14,7 +14,12 @@ class ContatoController extends Controller
      */
     public function index()
     {
-        //
+        $dados = array();
+        if (request('find' !== null))
+            $busca = request('find');
+       // $dados = Contato::where('nome', 'like', '%$busca%'); //Contato::all()
+       $contatos = Contato::all();       
+        return view('contato.index', ['contatos' => $contatos]);
     }
 
     /**
@@ -24,7 +29,7 @@ class ContatoController extends Controller
      */
     public function create()
     {
-        //
+        return view('contato.create');
     }
 
     /**
@@ -36,6 +41,12 @@ class ContatoController extends Controller
     public function store(Request $request)
     {
         //
+        $name = $request->input('name');
+        $phone = $request->input('phone');
+        $email = $request->input('email');
+
+        $c = Contato::create($request->all());
+        return redirect()->route('contato.index');
     }
 
     /**
@@ -44,9 +55,10 @@ class ContatoController extends Controller
      * @param  \App\Models\Contato  $contato
      * @return \Illuminate\Http\Response
      */
-    public function show(Contato $contato)
+    public function show($id)
     {
-        //
+        $contato = Contato::find($id);
+        return view('contato.show')->with('contato', $contato);
     }
 
     /**
@@ -55,9 +67,10 @@ class ContatoController extends Controller
      * @param  \App\Models\Contato  $contato
      * @return \Illuminate\Http\Response
      */
-    public function edit(Contato $contato)
+    public function edit($id)
     {
-        //
+        $contato = Contato::find($id);
+        return view('contato.edit')->with('contato', $contato);
     }
 
     /**
@@ -67,9 +80,10 @@ class ContatoController extends Controller
      * @param  \App\Models\Contato  $contato
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contato $contato)
+    public function update(Request $request, $id)
     {
-        //
+        Contato::find($id)->update($request->all());
+        return redirect()->route('contato.index');
     }
 
     /**
@@ -78,8 +92,10 @@ class ContatoController extends Controller
      * @param  \App\Models\Contato  $contato
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contato $contato)
+    public function destroy($id)
     {
-        //
+        Contato::destroy($id);
+        return redirect()->route('contato.index');
+
     }
 }

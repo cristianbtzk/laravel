@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\ConeController;
 use App\Http\Controllers\HojeController;
 use App\Http\Controllers\PiramideController;
+use App\Models\Contato;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,3 +73,4 @@ Route::get('/piramide/{h}/{ab}/{tipo}', function ($h, $ab, $tipo) {
 Route::redirect('/pir/{h}/{ab}/{tipo}', '/piramide/{h}/{ab}/{tipo}');
 
 Route::resource('/agenda', AgendaController::class);
+Route::resource('/contato', ContatoController::class);
