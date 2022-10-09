@@ -14,7 +14,10 @@ class ServiceStatusController extends Controller
      */
     public function index()
     {
-        //
+        $data = ServiceStatus::all();
+
+        return view("serviceStatus.index")->with('serviceStatus', $data);
+
     }
 
     /**
@@ -24,7 +27,7 @@ class ServiceStatusController extends Controller
      */
     public function create()
     {
-        //
+      return view("serviceStatus.create");
     }
 
     /**
@@ -35,7 +38,8 @@ class ServiceStatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      ServiceStatus::create($request->all());
+      return redirect()->route('serviceStatus.index');
     }
 
     /**
@@ -44,9 +48,10 @@ class ServiceStatusController extends Controller
      * @param  \App\Models\ServiceStatus  $serviceStatus
      * @return \Illuminate\Http\Response
      */
-    public function show(ServiceStatus $serviceStatus)
+    public function show($id)
     {
-        //
+      $data = ServiceStatus::find($id);
+      return view('serviceStatus.show')->with('serviceStatus', $data);
     }
 
     /**
@@ -55,9 +60,10 @@ class ServiceStatusController extends Controller
      * @param  \App\Models\ServiceStatus  $serviceStatus
      * @return \Illuminate\Http\Response
      */
-    public function edit(ServiceStatus $serviceStatus)
+    public function edit($id)
     {
-        //
+      $data = ServiceStatus::find($id);
+      return view('serviceStatus.edit')->with('serviceStatus', $data);
     }
 
     /**
@@ -67,9 +73,10 @@ class ServiceStatusController extends Controller
      * @param  \App\Models\ServiceStatus  $serviceStatus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ServiceStatus $serviceStatus)
+    public function update(Request $request, $id)
     {
-        //
+      ServiceStatus::find($id)->update($request->all());
+      return redirect()->route('serviceStatus.index');
     }
 
     /**
@@ -78,8 +85,9 @@ class ServiceStatusController extends Controller
      * @param  \App\Models\ServiceStatus  $serviceStatus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ServiceStatus $serviceStatus)
+    public function destroy($id)
     {
-        //
+      ServiceStatus::destroy($id);
+      return redirect()->route('serviceStatus.index');
     }
 }
