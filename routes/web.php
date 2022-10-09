@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CidadeController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\ConeController;
@@ -76,5 +77,6 @@ Route::redirect('/pir/{h}/{ab}/{tipo}', '/piramide/{h}/{ab}/{tipo}');
 
 Route::resource('/agenda', AgendaController::class);
 Route::resource('/estado', EstadoController::class);
+Route::resource('/category', CategoryController::class);
 Route::resource('/cidade', CidadeController::class);
 Route::resource('/contato', ContatoController::class);
