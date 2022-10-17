@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
+use App\Models\User_City;
 use Illuminate\Http\Request;
 
-class AddressController extends Controller
+class UserCityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $data = Address::all();
+        $data = User_City::all();
 
-        return view("address.index")->with('addresses', $data);
+        return view("userCity.index")->with('userCities', $data);
 
     }
 
@@ -27,7 +27,7 @@ class AddressController extends Controller
      */
     public function create()
     {
-      return view("address.create");
+      return view("userCity.create");
     }
 
     /**
@@ -38,56 +38,56 @@ class AddressController extends Controller
      */
     public function store(Request $request)
     {
-      Address::create($request->all());
-      return redirect()->route('address.index');
+      User_City::create($request->all());
+      return redirect()->route('userCity.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\User_City  $userCity
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($user_id, $city_id)
     {
-      $data = Address::where('user_id', $id)->first();
-      return view('address.show')->with('address', $data);
+      $data = User_City::where('user_id', $user_id);
+      return view('userCity.show')->with('userCity', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\User_City  $userCity
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-      $data = Address::where('user_id', $id)->first();
-      return view('address.edit')->with('address', $data);
+      $data = User_City::find($id);
+      return view('userCity.edit')->with('userCity', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\User_City  $userCity
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-      Address::where('user_id', $id)->first()->update($request->all());
-      return redirect()->route('address.index');
+      User_City::find($id)->update($request->all());
+      return redirect()->route('userCity.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Address  $address
+     * @param  \App\Models\User_City  $userCity
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-      Address::destroy($id);
-      return redirect()->route('address.index');
+      User_City::destroy($id);
+      return redirect()->route('userCity.index');
     }
 }

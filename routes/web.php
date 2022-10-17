@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\EvaluationController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceStatusController;
 use App\Http\Controllers\StateController;
+use App\Http\Controllers\UserCityController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +42,5 @@ Route::resource('/state', StateController::class);
 Route::resource('/category', CategoryController::class);
 Route::resource('/serviceStatus', ServiceStatusController::class);
 Route::resource('/city', CityController::class);
+Route::resource('/address', AddressController::class);
+Route::resource('/userCity', UserCityController::class);

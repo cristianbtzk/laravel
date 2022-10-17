@@ -6,7 +6,7 @@
     <title>@yield('title')</title>
 </head>
 <body>
-@component('service.nav')@endcomponent
+@component('nav')@endcomponent
 @yield('content')
 </body>
 </html>

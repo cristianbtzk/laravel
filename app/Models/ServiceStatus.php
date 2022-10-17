@@ -9,4 +9,8 @@ class ServiceStatus extends Model
 {
     use HasFactory;
     protected $fillable = ['description'];
+
+    public function services() {
+      return $this->hasMany('App\Models\Service');
+    }
 }

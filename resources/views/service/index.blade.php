@@ -15,15 +15,15 @@
     <td><b>Alterar</b></td>
     <td><b>Excluir</b></td></tr>
 
-      @foreach ($services as $service) 
+      @foreach ($services as $service)
         <tr><td>{{ $service->id }}</td>
         <td>{{ $service->title }}</td>
         <td>{{ $service->description }}</td>
         <td>{{ $service->min_date }}</td>
         <td>{{ $service->max_date }}</td>
-        <td>{{ $service->user_id }}</td>
+        <td>{{ $service->user->name }}</td>
         <td>{{ $service->service_status_id }}</td>
-        <td>{{ $service->category_id }}</td>
+        <td>{{ $service->category->title }}</td>
         
         <td><a href="{{ route('service.show',$service->id) }}"><button>Detalhes</button></a></td>
         <td><a href="{{ route('service.edit',$service->id) }}"><button>Editar</button></a></td>

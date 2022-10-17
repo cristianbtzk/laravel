@@ -14,7 +14,10 @@ class EvaluationController extends Controller
      */
     public function index()
     {
-        //
+        $data = Evaluation::all();
+
+        return view("evaluation.index")->with('evaluations', $data);
+
     }
 
     /**
@@ -24,7 +27,7 @@ class EvaluationController extends Controller
      */
     public function create()
     {
-        //
+      return view("evaluation.create");
     }
 
     /**
@@ -35,7 +38,8 @@ class EvaluationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Evaluation::create($request->all());
+      return redirect()->route('evaluation.index');
     }
 
     /**
@@ -44,9 +48,10 @@ class EvaluationController extends Controller
      * @param  \App\Models\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function show(Evaluation $evaluation)
+    public function show($id)
     {
-        //
+      $data = Evaluation::find($id);
+      return view('evaluation.show')->with('evaluation', $data);
     }
 
     /**
@@ -55,9 +60,10 @@ class EvaluationController extends Controller
      * @param  \App\Models\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Evaluation $evaluation)
+    public function edit($id)
     {
-        //
+      $data = Evaluation::find($id);
+      return view('evaluation.edit')->with('evaluation', $data);
     }
 
     /**
@@ -67,9 +73,10 @@ class EvaluationController extends Controller
      * @param  \App\Models\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Evaluation $evaluation)
+    public function update(Request $request, $id)
     {
-        //
+      Evaluation::find($id)->update($request->all());
+      return redirect()->route('evaluation.index');
     }
 
     /**
@@ -78,8 +85,9 @@ class EvaluationController extends Controller
      * @param  \App\Models\Evaluation  $evaluation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Evaluation $evaluation)
+    public function destroy($id)
     {
-        //
+      Evaluation::destroy($id);
+      return redirect()->route('evaluation.index');
     }
 }

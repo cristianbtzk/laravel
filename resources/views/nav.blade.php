@@ -1,3 +1,19 @@
-<a href="{{route('agenda.create')}}">Criar</a>
-<a href="{{route('agenda.index')}}">Listar</a>
+<a href="{{route('category.create')}}">Criar Categoria</a>
+<a href="{{route('category.index')}}">Listar Categorias</a>
+<a href="{{route('city.create')}}">Criar Cidade</a>
+<a href="{{route('city.index')}}">Listar Cidades</a>
+<a href="{{route('state.create')}}">Criar Estado</a>
+<a href="{{route('state.index')}}">Listar Estados</a>
+<a href="{{route('serviceStatus.create')}}">Criar Status de Serviço</a>
+<a href="{{route('serviceStatus.index')}}">Listar Status de Serviço</a>
+<a href="{{route('user.create')}}">Criar Usuário</a>
+<a href="{{route('user.index')}}">Listar Usuários</a>
+<a href="{{route('service.create')}}">Criar Serviço</a>
+<a href="{{route('service.index')}}">Listar Serviços</a>
+<a href="{{route('message.create')}}">Criar Mensagem</a>
+<a href="{{route('message.index')}}">Listar Mensagens</a>
+<a href="{{route('address.create')}}">Criar Endereço</a>
+<a href="{{route('address.index')}}">Listar Endereços</a>
+<a href="{{route('userCity.create')}}">Adicionar cidade para usuários</a>
+<a href="{{route('userCity.index')}}">Listar usuários e cidades</a>
 <br><br>
