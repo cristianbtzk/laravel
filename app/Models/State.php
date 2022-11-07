@@ -11,7 +11,7 @@ class State extends Model
     protected $fillable = ['name', 'abbreviation'];
 
     public function cities(){
-        return $this->hasMany('App\Models\Citie'); 
+        return $this->hasMany('App\Models\City'); 
     }
 
 }
