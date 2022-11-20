@@ -16,7 +16,17 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             StateSeeder::class,
-            CitySeeder::class
+            CitySeeder::class,
+            RoleSeeder::class,
+            ServiceStatusSeeder::class,
+            CategorySeeder::class,
+            UserSeeder::class,
+            UserRoleSeeder::class,
+            UserCitySeeder::class,
+            AddressSeeder::class,
+            ServiceSeeder::class,
+            MessageSeeder::class,
+            EvaluationSeeder::class,
         ]);
     }
 }
