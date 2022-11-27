@@ -14,9 +14,12 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $data = Service::all();
+      $description = request()->input('description');
+      $data = Service::where('description', 'LIKE', '%' . $description . '%')
+        ->orderBy('description')
+        ->paginate(5);
 
-        return view("service.index")->with('services', $data);
+        return view("service.index")->with('services', $data)->with('description', $description);
 
     }
 

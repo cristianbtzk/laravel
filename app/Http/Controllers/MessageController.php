@@ -14,9 +14,12 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $data = Message::all();
+      $text = request()->input('text');
+      $data = Message::where('text', 'LIKE', '%' . $text . '%')
+        ->orderBy('text')
+        ->paginate(5);
 
-        return view("message.index")->with('messages', $data);
+        return view("message.index")->with('messages', $data)->with('text', $text);
 
     }
 

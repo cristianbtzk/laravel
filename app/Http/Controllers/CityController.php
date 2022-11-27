@@ -14,9 +14,12 @@ class CityController extends Controller
    */
   public function index()
   {
-    $data = City::all();
+    $name = request()->input('name');
+    $data = City::where('name', 'LIKE', '%' . $name . '%')
+      ->orderBy('name')
+      ->paginate(5);
 
-    return view("city.index")->with('cities', $data);
+    return view("city.index")->with('cities', $data)->with('name', $name);
   }
 
   /**

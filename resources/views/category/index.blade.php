@@ -1,6 +1,17 @@
 @extends('category.layout')
 @section('title','Categorias')
 @section('content')
+<form action="{{ route('category.index')}}" method="get">
+  <div class="row">
+    <div class="col-3">
+      <input type="text" name="title" id="title">
+    </div>
+    <div class="col-3">
+      <button type="submit">Pesquisar</button>
+    </div>
+  </div>
+</form>
+
 <table>
 <tr><td><b>ID</b></td>
     <td><b>Nome</b></td>
@@ -13,7 +24,7 @@
       @foreach ($categories as $category) 
         <tr><td>{{ $category->id }}</td>
         <td>{{ $category->title }}</td>
-        <td>{{ $category->description }}</td>
+        <td>{{ $category->title }}</td>
         
         <td><a href="{{ route('category.show',$category->id) }}"><button>Detalhes</button></a></td>
         <td><a href="{{ route('category.edit',$category->id) }}"><button>Editar</button></a></td>
@@ -25,4 +36,5 @@
       @endforeach
 
 </table>
+{{$categories->appends(array('title' => $title))->links()}}
 @endsection

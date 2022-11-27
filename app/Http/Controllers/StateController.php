@@ -14,9 +14,12 @@ class StateController extends Controller
      */
     public function index()
     {
-        $data = State::all();
+      $name = request()->input('name');
+      $data = State::where('name', 'LIKE', '%' . $name . '%')
+        ->orderBy('name')
+        ->paginate(8);
 
-        return view("state.index")->with('states', $data);
+        return view("state.index")->with('states', $data)->with('name', $name);
 
     }
 

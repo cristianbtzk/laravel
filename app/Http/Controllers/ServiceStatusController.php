@@ -14,9 +14,12 @@ class ServiceStatusController extends Controller
      */
     public function index()
     {
-        $data = ServiceStatus::all();
+      $description = request()->input('description');
+      $data = ServiceStatus::where('description', 'LIKE', '%' . $description . '%')
+        ->orderBy('description')
+        ->paginate(2);
 
-        return view("serviceStatus.index")->with('serviceStatus', $data);
+        return view("serviceStatus.index")->with('serviceStatus', $data)->with('description', $description);
 
     }
 

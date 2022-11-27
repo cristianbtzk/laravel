@@ -14,6 +14,6 @@ class UserCitySeeder extends Seeder
      */
     public function run()
     {
-      User_City::factory(5)->create();
+      User_City::factory(3)->create();
     }
 }

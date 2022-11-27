@@ -14,9 +14,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data = Category::all();
+        $title = request()->input('title');
+        $data = Category::where('title', 'LIKE', '%'.$title.'%')
+        ->orderBy('title')
+        ->paginate(10);
 
-        return view("category.index")->with('categories', $data);
+        return view("category.index")->with('categories', $data)->with('title', $title);
 
     }
 

@@ -1,6 +1,16 @@
 @extends('user.layout')
 @section('title','Estados')
 @section('content')
+<form action="{{ route('category.index')}}" method="get">
+  <div class="row">
+    <div class="col-3">
+      <input type="text" name="title" id="title">
+    </div>
+    <div class="col-3">
+      <button type="submit">Pesquisar</button>
+    </div>
+  </div>
+</form>
 <table>
 <tr><td><b>ID</b></td>
     <td><b>Nome</b></td>

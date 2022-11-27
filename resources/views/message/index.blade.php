@@ -1,6 +1,16 @@
 @extends('message.layout')
 @section('title','Estados')
 @section('content')
+<form action="{{ route('message.index')}}" method="get">
+  <div class="row">
+    <div class="col-3">
+      <input type="text" name="text" id="text">
+    </div>
+    <div class="col-3">
+      <button type="submit">Pesquisar</button>
+    </div>
+  </div>
+</form>
 <table>
 <tr><td><b>ID</b></td>
     <td><b>Data</b></td>
@@ -31,4 +41,5 @@
       @endforeach
 
 </table>
+{{$messages->appends(array('text' => $text))->links()}}
 @endsection

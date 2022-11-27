@@ -1,6 +1,16 @@
 @extends('state.layout')
 @section('title','Estados')
 @section('content')
+<form action="{{ route('state.index')}}" method="get">
+  <div class="row">
+    <div class="col-3">
+      <input type="text" name="name" id="name">
+    </div>
+    <div class="col-3">
+      <button type="submit">Pesquisar</button>
+    </div>
+  </div>
+</form>
 <table>
 <tr><td><b>ID</b></td>
     <td><b>Nome</b></td>
@@ -25,4 +35,5 @@
       @endforeach
 
 </table>
+{{$states->appends(array('name' => $name))->links()}}
 @endsection
