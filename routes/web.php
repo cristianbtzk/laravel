@@ -44,3 +44,6 @@ Route::resource('/serviceStatus', ServiceStatusController::class);
 Route::resource('/city', CityController::class);
 Route::resource('/address', AddressController::class);
 Route::resource('/userCity', UserCityController::class);
+Route::get('/login', function() {
+    return view('signin');
+});
