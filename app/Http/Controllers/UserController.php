@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function auth(Request $request)
+    {
+      
+
+      return redirect()->route('user.index');
+    }
+
+
     public function index()
     {
         $data = User::all();
@@ -27,7 +36,9 @@ class UserController extends Controller
      */
     public function create()
     {
-      return view("user.create");
+      $roles = Role::where('id', '>', 1)->get();
+
+      return view("user.create")->with('roles', $roles);
     }
 
     /**
@@ -38,7 +49,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-      User::create($request->all());
+      $name = $request->input('name');
+      $email = $request->input('email');
+      $password = $request->input('password');
+      $cpf = $request->input('cpf');
+      $cnpj = $request->input('cnpj');
+      $role = $request->input('role_id');
+      $is_active = true;
+
+      $user = new User();
+      $user->name = $name;
+      $user->email = $email;
+      $user->password = sha1($password);
+      $user->cpf = $cpf;
+      $user->cnpj = $cnpj;
+      $user->is_active = $is_active;
+      $user->save();
+
+      $user->roles()->attach($role);
+
       return redirect()->route('user.index');
     }
 
