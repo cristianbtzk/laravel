@@ -25,9 +25,9 @@ class UserController extends Controller
 
     session(['user' => $user]);
 
-    return response()->json(session()->get('user'));
+    //return response()->json(session()->get('user'));
 
-    return redirect()->route('user.index');
+    return redirect()->route('provider.index');
   }
 
 

@@ -22,6 +22,13 @@ class CityController extends Controller
     return view("city.index")->with('cities', $data)->with('name', $name);
   }
 
+  public function getByState($id)
+  {
+    $data = City::where('state_id', '=', $id)->get();
+
+    return $data;
+  }
+
   /**
    * Show the form for creating a new resource.
    *
