@@ -37,7 +37,7 @@ Route::resource('/evaluation', EvaluationController::class);
 Route::resource('/message', MessageController::class);
 Route::resource('/role', RoleController::class);
 Route::resource('/service', ServiceController::class);
-Route::get('/user/auth', [UserController::class, 'auth'])->name('user.auth');
+Route::post('/user/auth', [UserController::class, 'auth'])->name('user.auth');
 Route::resource('/user', UserController::class);
 Route::resource('/state', StateController::class);
 Route::resource('/category', CategoryController::class);

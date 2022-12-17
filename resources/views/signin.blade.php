@@ -12,7 +12,7 @@
 <body>
     <div class="h-100 container d-flex align-items-center justify-content-center">
         <div class="container rounded shadow-lg w-50 p-5">
-        <form action="" method="POST">
+        <form action="{{ route('user.auth') }}" method="POST">
             <div class="mb-3">
                 <label for="email" class="form-label">Email:</label>
                 <input type="text" class="form-control" id="email" name="email">
