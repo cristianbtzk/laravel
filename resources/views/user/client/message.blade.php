@@ -1,4 +1,4 @@
-@extends('user.provider.layout')
+@extends('user.client.layout')
 @section('title','Estados')
 @section('content')
 <div class="col p-3 d-flex flex-column">
@@ -28,5 +28,15 @@
       </tbody>
     </table>
 
+    <h4>Enviar mensagem</h4>
+
+    <form action="{{ route('message.store')}}" method="POST">
+      @method("POST")
+      <textarea class="d-block" name="text" placeholder="Mensagem"></textarea>
+      <input class="d-none" value="{{$userId}}" name="to_id" type="text">
+      <input class="d-none" value="{{$serviceId}}" name="service_id" type="text">
+      <button class="mt-4 btn btn-primary" type="submit">Enviar mensagem</button>
+    </form>
+  </div>
 </div>
 @endsection

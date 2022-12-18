@@ -36,9 +36,12 @@ Route::prefix('/app')->group(function () {
 
 
 Route::resource('/evaluation', EvaluationController::class);
+Route::get('/message/getByServiceUser/{serviceId}/{userId}', [MessageController::class, 'getByServiceUser'])->name('message.getByServiceUser');
+Route::get('/message/getByServiceClient/{serviceId}', [MessageController::class, 'getByServiceClient'])->name('message.getByServiceClient');
 Route::get('/message/getByService/{serviceId}', [MessageController::class, 'getByService'])->name('message.getByService');
 Route::resource('/message', MessageController::class);
 Route::resource('/role', RoleController::class);
+Route::get('/service/getByMessage', [ServiceController::class, 'getByMessage'])->name('service.getByMessage');
 Route::resource('/service', ServiceController::class);
 Route::post('/user/auth', [UserController::class, 'auth'])->name('user.auth');
 Route::resource('/user', UserController::class);

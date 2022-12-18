@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Message;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -34,6 +35,30 @@ class MessageController extends Controller
     return view("message.create");
   }
 
+  public function getByServiceUser($serviceId, $userId)
+  {
+    $data = Message::where('service_id', '=', $serviceId)->where(function ($query) use ($userId) {
+      $query->where('to_id', '=', $userId)->orWhere('from_id', '=', $userId);
+    })->get();
+
+    //return response()->json($data);
+
+    return view("user.client.message")->with('messages', $data)->with('serviceId', $serviceId)->with('userId', $userId);
+  }
+
+  public function getByServiceClient($serviceId)
+  {
+    $user = session()->get('user');
+
+    $data = User::whereHas('messages', function ($query) use ($serviceId) {
+      $query->where('service_id', $serviceId);
+    })->where('id', '<>', $user->id)->get();
+
+    //return response()->json($data);
+
+    return view("user.client.serviceMessages")->with('users', $data)->with('serviceId', $serviceId);
+  }
+
   public function getByService($serviceId)
   {
     $user = session()->get('user');
@@ -41,7 +66,7 @@ class MessageController extends Controller
     $data = Message::where('service_id', '=', $serviceId)->where(function ($query) use ($user) {
       $query->where('to_id', '=', $user->id)->orWhere('from_id', '=', $user->id);
     })->get();
-    
+
     $service = Service::find($serviceId);
     //return response()->json($data);
 
@@ -70,7 +95,7 @@ class MessageController extends Controller
     $service_id = $request->input('service_id');
     $to_id = $request->input('to_id');
     $from_id = $user->id;
-    $date = date("Y-m-d H:i:s");  
+    $date = date("Y-m-d H:i:s");
 
     $message = new Message();
     $message->text = $text;

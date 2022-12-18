@@ -24,7 +24,7 @@ class User extends Model
     }
 
     public function messages() {
-      return $this->hasMany('App\Models\Message');
+      return $this->hasMany('App\Models\Message', 'from_id');
     }
 
     public function roles() {

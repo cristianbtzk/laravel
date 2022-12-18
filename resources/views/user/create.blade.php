@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="h-100 container d-flex align-items-center justify-content-center">
-    <div class="container rounded shadow-lg w-50 p-5">
+    <div class="container rounded shadow-lg w-50 p-5" style="background-color: #fff;">
         <form action="{{ route('user.store') }}" method="POST">
             @method("POST")
             <h1>Novo usuário</h1>

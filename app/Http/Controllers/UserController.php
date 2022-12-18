@@ -27,11 +27,11 @@ class UserController extends Controller
 
     switch ($user->role->id) {
       case 2:
-        return redirect()->route('client.index');
+        return redirect()->route('client.services');
         break;
 
       case 3:
-        return redirect()->route('provider.index');
+        return redirect()->route('provider.availableServices');
         break;
 
       default:
