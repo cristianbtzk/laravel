@@ -2,7 +2,7 @@
 
   <a href="{{route('user.create')}}">Ver conversas</a>
   <a href="{{route('user.index')}}">Serviços</a>
-  <a href="{{route('user.index')}}">Editar perfil</a>
+  <a href="{{route('provider.profile')}}">Editar perfil</a>
   <br><br>
 
 </div>

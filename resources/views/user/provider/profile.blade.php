@@ -73,9 +73,9 @@
       $.each(cities, function(key, city) {
         $('select[name=city_id]').append(`<option value=${city.id}> ${city.name}</option>`)
       })
+      $('.hidden').css('display', 'block');
 
     })
-    $('.hidden').css('display', 'block');
 
   })
 </script>

@@ -10,10 +10,6 @@ value="@if (isset($service)) {{ $service->id}} @endif" disabled><br>
 <input name="min_date" type='date' value="@if (isset($service)) {{$service->min_date}} @endif"><br>
 <label>Data Final</label>
 <input name="max_date" type='date' value="@if (isset($service)) {{$service->max_date}} @endif"><br>
-<label>Usuário</label>
-<input name="user_id" type='text' value="@if (isset($service)) {{$service->user_id}} @endif"><br>
-<label>Status</label>
-<input name="service_status_id" type='text' value="@if (isset($service)) {{$service->service_status_id}} @endif"><br>
 <label>Categoria</label>
 <input name="category_id" type='text' value="@if (isset($service)) {{$service->category_id}} @endif"><br>
 <button type="submit" name="acao" value="salvar"

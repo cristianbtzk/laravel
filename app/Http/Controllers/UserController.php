@@ -25,9 +25,23 @@ class UserController extends Controller
 
     session(['user' => $user]);
 
+    switch ($user->role->id) {
+      case 2:
+        return redirect()->route('client.index');
+        break;
+
+      case 3:
+        return redirect()->route('provider.index');
+        break;
+
+      default:
+        # code...
+        break;
+    }
+
     //return response()->json(session()->get('user'));
 
-    return redirect()->route('provider.index');
+    
   }
 
 
@@ -77,7 +91,7 @@ class UserController extends Controller
 
     $user->roles()->attach($role);
 
-    return redirect()->route('user.index');
+    return redirect()->route('login');
   }
 
   /**

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ServiceStatus extends Model
 {
     use HasFactory;
-    protected $fillable = ['description'];
+    protected $fillable = ['id','description'];
 
     public function services() {
       return $this->hasMany('App\Models\Service');

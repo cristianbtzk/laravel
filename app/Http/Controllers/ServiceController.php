@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,8 @@ class ServiceController extends Controller
      */
     public function create()
     {
-      return view("service.create");
+      $categories = Category::all();
+      return view("service.create")->with('categories', $categories);
     }
 
     /**
@@ -41,8 +43,17 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-      Service::create($request->all());
-      return redirect()->route('service.index');
+      $newService = array(
+        'user_id' => session()->get('user')->id,
+        'title' => $request->input('title'),
+        'description' => $request->input('description'),
+        'min_date' => $request->input('min_date'),
+        'max_date' => $request->input('max_date'),
+        'category_id' => $request->input('category_id'),
+        'service_status_id' =>  1,
+      );
+      Service::create($newService);
+      return redirect()->route('client.services');
     }
 
     /**
@@ -91,6 +102,6 @@ class ServiceController extends Controller
     public function destroy($id)
     {
       Service::destroy($id);
-      return redirect()->route('service.index');
+      return redirect()->route('client.services');
     }
 }

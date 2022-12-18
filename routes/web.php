@@ -41,6 +41,9 @@ Route::resource('/role', RoleController::class);
 Route::resource('/service', ServiceController::class);
 Route::post('/user/auth', [UserController::class, 'auth'])->name('user.auth');
 Route::resource('/user', UserController::class);
+Route::get('/client/services', [ClientController::class, 'services'])->name('client.services');
+Route::put('/client/setAddress', [ClientController::class, 'setAddress'])->name('client.setAddress');
+Route::get('/client/profile', [ClientController::class, 'profile'])->name('client.profile');
 Route::resource('/client', ClientController::class);
 Route::post('/provider/addCity', [ProviderController::class, 'addCity'])->name('provider.addCity');
 Route::get('/provider/profile', [ProviderController::class, 'profile'])->name('provider.profile');
@@ -54,4 +57,4 @@ Route::resource('/address', AddressController::class);
 Route::resource('/userCity', UserCityController::class);
 Route::get('/login', function() {
     return view('user.signin');
-});
+})->name('login');

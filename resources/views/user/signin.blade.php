@@ -25,7 +25,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Entrar</button>
             </form>
-            <a href="#" class="link-secondary d-block mt-2">Não possui uma conta? Inscreva-se</a>
+            <a href="{{ route('user.create')}}" class="link-secondary d-block mt-2">Não possui uma conta? Inscreva-se</a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
