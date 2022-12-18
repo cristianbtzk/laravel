@@ -29,11 +29,18 @@
 
           <td class="d-flex">
             <a href="{{route('message.getByServiceClient', ['serviceId' => $service->id])}}"><button class="btn btn-primary">Ver mensagens</button></a>
+            @if ($service->service_status_id == 1)
+            <form class="mx-1" id="form_delete" name="form_delete" action="{{ route('service.finish',$service->id) }}" method="post" onsubmit="return confirm('Tem certeza que deseja encerrar o serviço?')">
+              @method('PATCH')
+              @csrf
+              <button type="submit" class="btn btn-info">Encerrar</button>
+            </form>
             <form class="mx-1" id="form_delete" name="form_delete" action="{{ route('service.destroy',$service->id) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
               @method('DELETE')
               @csrf
               <button type="submit" class="btn btn-danger">Excluir</button>
             </form>
+            @endif
           </td>
         </tr>
         @endforeach

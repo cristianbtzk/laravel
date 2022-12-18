@@ -26,6 +26,10 @@ class UserController extends Controller
     session(['user' => $user]);
 
     switch ($user->role->id) {
+      case 1:
+        return redirect()->route('category.index');
+        break;
+
       case 2:
         return redirect()->route('client.services');
         break;

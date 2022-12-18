@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ServiceController extends Controller
 {
@@ -102,6 +103,12 @@ class ServiceController extends Controller
   {
     Service::find($id)->update($request->all());
     return redirect()->route('service.index');
+  }
+
+  public function finish(Request $request, $id)
+  {
+    Service::find($id)->update(array('service_status_id' => 3));
+    return Redirect::back();
   }
 
   /**

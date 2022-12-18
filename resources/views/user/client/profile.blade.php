@@ -17,13 +17,17 @@
       <select name="state">
         <option disabled selected hidden>Selecione um estado</option>
         @foreach($states as $state)
-        <option value="{{$state->id}}">
+        <option value="{{$state->id}}" {{isset($user->address) && $state->id == $user->address->city->state_id ? 'selected' : ''}}>
           {{$state->name}}
         </option>
         @endforeach
       </select>
       <label class="{{$user->address ?'d-block' :'d-none'}} hidden">Cidade</label>
-      <select class="{{$user->address ?'d-block' :'d-none'}} hidden" name="city_id"></select>
+      <select class="{{$user->address ?'d-block' :'d-none'}} hidden" name="city_id">
+        @if(isset($user->address))
+        <option value="{{$user->address->city_id}}">{{$user->address->city->name}}</option>
+        @endif
+      </select>
       <label class="d-block">CEP</label>
       <input type='text' name="postal_code" value="@if (isset($user->address)) {{$user->address->postal_code}} @endif"><br>
       <label class="d-block">Bairro</label>

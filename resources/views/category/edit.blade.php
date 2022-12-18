@@ -3,12 +3,15 @@
 @section('title','Editar Categoria')
 
 @section('content')
-    <form action="{{ route('category.update',$category->id) }}" method="post">
-        
-        @method("PATCH")
-        @csrf
-        
-        @include('category.form')
+<div class="col p-3 ">
 
-    </form>
+  <form action="{{ route('category.update',$category->id) }}" method="post">
+
+    @method("PATCH")
+    @csrf
+
+    @include('category.form')
+
+  </form>
+</div>
 @endsection

@@ -41,6 +41,7 @@ Route::get('/message/getByServiceClient/{serviceId}', [MessageController::class,
 Route::get('/message/getByService/{serviceId}', [MessageController::class, 'getByService'])->name('message.getByService');
 Route::resource('/message', MessageController::class);
 Route::resource('/role', RoleController::class);
+Route::patch('/service/finish/{id}', [ServiceController::class, 'finish'])->name('service.finish');
 Route::get('/service/getByMessage', [ServiceController::class, 'getByMessage'])->name('service.getByMessage');
 Route::resource('/service', ServiceController::class);
 Route::post('/user/auth', [UserController::class, 'auth'])->name('user.auth');
