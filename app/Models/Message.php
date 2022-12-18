@@ -20,6 +20,6 @@ class Message extends Model
     }
 
     public function to() {
-      return $this->belongsTo('App\Models\User', 'tot_id');   
+      return $this->belongsTo('App\Models\User', 'to_id');   
     }
 }

@@ -36,6 +36,7 @@ Route::prefix('/app')->group(function () {
 
 
 Route::resource('/evaluation', EvaluationController::class);
+Route::get('/message/getByService/{serviceId}', [MessageController::class, 'getByService'])->name('message.getByService');
 Route::resource('/message', MessageController::class);
 Route::resource('/role', RoleController::class);
 Route::resource('/service', ServiceController::class);
@@ -45,6 +46,7 @@ Route::get('/client/services', [ClientController::class, 'services'])->name('cli
 Route::put('/client/setAddress', [ClientController::class, 'setAddress'])->name('client.setAddress');
 Route::get('/client/profile', [ClientController::class, 'profile'])->name('client.profile');
 Route::resource('/client', ClientController::class);
+Route::get('/provider/availableServices', [ProviderController::class, 'availableServices'])->name('provider.availableServices');
 Route::post('/provider/addCity', [ProviderController::class, 'addCity'])->name('provider.addCity');
 Route::get('/provider/profile', [ProviderController::class, 'profile'])->name('provider.profile');
 Route::resource('/provider', ProviderController::class);
