@@ -20,3 +20,10 @@ INSERT INTO laravel.states (id,name,abbreviation)
 INSERT INTO laravel.states (id,name,abbreviation)
 	VALUES (2,'Santa Catarina','SC');
   
+  --  Auto-generated SQL script #202212182137
+INSERT INTO laravel.service_statuses (id,description)
+	VALUES (1,'Aberto');
+INSERT INTO laravel.service_statuses (id,description)
+	VALUES (2,'Em andamento');
+INSERT INTO laravel.service_statuses (id,description)
+	VALUES (3,'Finalizado');
