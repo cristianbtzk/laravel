@@ -27,3 +27,15 @@ INSERT INTO laravel.service_statuses (id,description)
 	VALUES (2,'Em andamento');
 INSERT INTO laravel.service_statuses (id,description)
 	VALUES (3,'Finalizado');
+
+--  Auto-generated SQL script #202212182228
+INSERT INTO laravel.cities (id,name,state_id)
+	VALUES (1,'São Paulo',1);
+INSERT INTO laravel.cities (id,name,state_id)
+	VALUES (2,'Santos',1);
+INSERT INTO laravel.cities (id,name,state_id)
+	VALUES (3,'Blumenau',2);
+INSERT INTO laravel.cities (id,name,state_id)
+	VALUES (4,'Rio do Sul',2);
+INSERT INTO laravel.cities (id,name,state_id)
+	VALUES (5,'Ibirama',2);
